@@ -1,0 +1,11 @@
+# --- go2ReachabilityConfig.cmake.in ---
+# Portable config file for b1Reachability
+
+# Path to the directory containing this config file
+get_filename_component(B1REACHABILITY_CONFIG_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+# Path to reachability constraints relative to config file
+set(B1REACHABILITY_CONSTRAINTS_DIR "${B1REACHABILITY_CONFIG_DIR}/../reachability_constraints")
+
+# Mark package as found
+set(B1REACHABILITY_FOUND TRUE)

@@ -24,8 +24,8 @@ MARGIN_FEET_SIDE = 0.02
 # In[2]:
 
 
-#loading go2 model
-robot = load("go2")
+#loading b1 model
+robot = load("b1")
 ZERO_CONF = robot.q0[:7]
 
 
@@ -49,16 +49,18 @@ pin.forwardKinematics(robot.model, robot.data, robot.q0)
 pin.updateFramePlacements(robot.model, robot.data)
 pin.updateGeometryPlacements(robot.model, robot.data, robot.collision_model, robot.collision_data)
 
-effectors = ["FL_foot_joint", "RL_foot_joint", "RR_foot_joint", "FR_foot_joint"]
+effectors = ["FL_foot", "RL_foot", "RR_foot", "FR_foot"]
 frame_ids = [robot.model.getFrameId(eff) for eff in effectors]
+frame_ids_fixed = [robot.model.getFrameId(eff+"_fixed") for eff in effectors]
 placements = [robot.data.oMf[frame_id] for frame_id in frame_ids]
+placements_fixed = [robot.data.oMf[frame_id] for frame_id in frame_ids_fixed]
 
 #display effectors positions just to make sure that there is no offset
 effectorspheres_id = ['world/ball'+eff for eff in effectors]
-[viz.addSphere(sph_id,.023,[1,0,0,1]) for sph_id in effectorspheres_id]
+[viz.addSphere(sph_id,.03,[1,0,0,1]) for sph_id in effectorspheres_id]
 
 for frame_id, sph_id in zip(frame_ids, effectorspheres_id):
-    pos = robot.data.oMf[frame_id].translation
+    pos = robot.data.oMf[frame_id].translation; pos[2] -= 0.0
     viz.applyConfiguration(sph_id,[pos[0],pos[1],pos[2],1,0,0,0])
 
 

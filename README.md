@@ -6,6 +6,8 @@
 
 ## Installation
 
+For this to work you need pinocchio, example-robot-data, pycddlib and scipy
+
 1. **Build and install using CMake**:
 
 ```bash

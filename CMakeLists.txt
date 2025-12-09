@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.15)
 # -----------------------------
 # Project definition
 # -----------------------------
-set(PROJECT_NAME go2Reachability)
-set(PROJECT_DESCRIPTION ".obj files describing the kinematic constraints of the go2 robot")
+set(PROJECT_NAME b1Reachability)
+set(PROJECT_DESCRIPTION ".obj files describing the kinematic constraints of the b1 robot")
 
 project(${PROJECT_NAME} LANGUAGES NONE DESCRIPTION "${PROJECT_DESCRIPTION}")
 
@@ -27,23 +27,23 @@ install(FILES ${OBJ_FILES}
 set(CONFIG_INSTALL_DIR "share/${PROJECT_NAME}/cmake")
 
 configure_file(
-    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/go2ReachabilityConfig.cmake.in
-    ${CMAKE_CURRENT_BINARY_DIR}/go2ReachabilityConfig.cmake
+    ${CMAKE_CURRENT_SOURCE_DIR}/cmake/b1ReachabilityConfig.cmake.in
+    ${CMAKE_CURRENT_BINARY_DIR}/b1ReachabilityConfig.cmake
     @ONLY
 )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/go2ReachabilityConfig.cmake
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/b1ReachabilityConfig.cmake
         DESTINATION ${CONFIG_INSTALL_DIR})
 
 # -----------------------------
 # Generate portable Python Config
 # -----------------------------
-set(PY_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/go2ReachabilityConfig.py")
+set(PY_CONFIG_FILE "${CMAKE_CURRENT_BINARY_DIR}/b1ReachabilityConfig.py")
 
 # On utilise un chemin relatif au prefix pour que ce soit portable
 file(WRITE "${PY_CONFIG_FILE}"
 "import os\n"
-"GO2REACHABILITY_CONSTRAINTS_DIR = os.path.join(os.path.dirname(__file__), 'reachability_constraints/')\n"
+"B1REACHABILITY_CONSTRAINTS_DIR = os.path.join(os.path.dirname(__file__), 'reachability_constraints/')\n"
 )
 
 install(FILES "${PY_CONFIG_FILE}"
