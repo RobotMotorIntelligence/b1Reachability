@@ -6,8 +6,6 @@
 
 ## Installation
 
-For this to work you need pinocchio, example-robot-data, pycddlib and scipy
-
 1. **Build and install using CMake**:
 
 ```bash
@@ -37,7 +35,8 @@ Install example robot data
 
 ## Regenerate the obj files
 
-This requires example-robot-data and Blender 4.3
+
+For this to work you need pinocchio, example-robot-data, pycddlib, scipy and Blender 4.3
 
 ```bash
 conda install example-robot-data scipy -c conda-forge
@@ -76,7 +75,7 @@ message(STATUS "Reachability OBJ dir = ${B1REACHABILITY_CONSTRAINTS_DIR}")
 add_executable(test_find main.cpp)
 
 target_compile_definitions(test_find PRIVATE
-    GO2REACHABILITY_CONSTRAINTS_DIR="${B1REACHABILITY_CONSTRAINTS_DIR}")
+    B1REACHABILITY_CONSTRAINTS_DIR="${B1REACHABILITY_CONSTRAINTS_DIR}")
 ```
 cpp file
 ```c++
