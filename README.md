@@ -17,11 +17,11 @@ cmake --install . --prefix /desired/install/path
 
 This will install:
 
-- .obj files in share/go2Reachability/reachability_constraints
+- .obj files in share/b1Reachability/reachability_constraints
 
-- CMake config: share/go2Reachability/cmake/b1ReachabilityConfig.cmake
+- CMake config: share/b1Reachability/cmake/b1ReachabilityConfig.cmake
 
-- Python config: share/go2Reachability/b1ReachabilityConfig.py
+- Python config: share/b1Reachability/b1ReachabilityConfig.py
 
 2. **Add Python config to your PYTHONPATH**:
 
