@@ -1,6 +1,6 @@
-# go2Reachability
+# b1Reachability
 
-.obj files describing the kinematic constraints of the go2 robot.
+.obj files describing the kinematic constraints of the b1 robot.
 
 ---
 
@@ -19,17 +19,17 @@ This will install:
 
 - .obj files in share/go2Reachability/reachability_constraints
 
-- CMake config: share/go2Reachability/cmake/go2ReachabilityConfig.cmake
+- CMake config: share/go2Reachability/cmake/b1ReachabilityConfig.cmake
 
-- Python config: share/go2Reachability/go2ReachabilityConfig.py
+- Python config: share/go2Reachability/b1ReachabilityConfig.py
 
 2. **Add Python config to your PYTHONPATH**:
 
 ```bash
-export PYTHONPATH=/desired/install/path/share/go2Reachability:$PYTHONPATH
+export PYTHONPATH=/desired/install/path/share/b1Reachability:$PYTHONPATH
 ```
 
-This allows Python scripts to import go2ReachabilityConfig and access the .obj files.
+This allows Python scripts to import b1ReachabilityConfig and access the .obj files.
 Usage
 Install example robot data
 
@@ -57,24 +57,24 @@ This will generate reduced .obj files from the original kinematic constraint mod
 ## Usage
 1. **Using the files in Python**: 
 ```python
-from go2ReachabilityConfig import GO2REACHABILITY_CONSTRAINTS_DIR
+from b1ReachabilityConfig import B1REACHABILITY_CONSTRAINTS_DIR
 import os, glob
 
-obj_files = glob.glob(os.path.join(GO2REACHABILITY_CONSTRAINTS_DIR, "*.obj"))
+obj_files = glob.glob(os.path.join(B1REACHABILITY_CONSTRAINTS_DIR, "*.obj"))
 print("Found OBJ files:", obj_files)
 ```
 
 2. **Using the files in C++**:
 CMakeLists.txt example
 ```cmake
-find_package(go2Reachability REQUIRED PATHS /desired/install/path/share/go2Reachability/cmake)
+find_package(b1Reachability REQUIRED PATHS /desired/install/path/share/b1Reachability/cmake)
 
-message(STATUS "Reachability OBJ dir = ${GO2REACHABILITY_CONSTRAINTS_DIR}")
+message(STATUS "Reachability OBJ dir = ${B1REACHABILITY_CONSTRAINTS_DIR}")
 
 add_executable(test_find main.cpp)
 
 target_compile_definitions(test_find PRIVATE
-    GO2REACHABILITY_CONSTRAINTS_DIR="${GO2REACHABILITY_CONSTRAINTS_DIR}")
+    GO2REACHABILITY_CONSTRAINTS_DIR="${B1REACHABILITY_CONSTRAINTS_DIR}")
 ```
 cpp file
 ```c++
@@ -83,7 +83,7 @@ cpp file
 #include <filesystem>
 
 int main() {
-    std::string obj_dir = GO2REACHABILITY_CONSTRAINTS_DIR;
+    std::string obj_dir = B1REACHABILITY_CONSTRAINTS_DIR;
 
     std::cout << "Reachability OBJ dir: " << obj_dir << std::endl;
 
