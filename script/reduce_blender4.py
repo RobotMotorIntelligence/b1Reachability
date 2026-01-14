@@ -59,6 +59,13 @@ def load_obj(file):
     bpy.ops.mesh.convex_hull()
     bpy.ops.object.mode_set(mode="OBJECT")
 
+	# Offset object by -5 cm along Z (Blender units = metres)
+    obj.location.z -= 0.1
+
+    # Apply transform so geometry is really moved
+    bpy.ops.object.transform_apply(location=True, rotation=False, scale=False)
+
+
     # Prepare output name and path
     name_base = safe_base_name(file)
     obj.name = f"{name_base}_reduced{EXTENSION}"
